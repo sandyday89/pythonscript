@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auto-ui
+  namespace: alliancecu
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+  - host: alliancecu.apps.ilendx.tech
+    http:
+      paths:
+      - backend:
+          serviceName: auto-ui
+          servicePort: 80
+        path: /
+   tls:
+   - hosts:
+     - alliancecu.apps.ilendx.tech
+   serviceName: alliancecu-master-ui.ilendx.apps-tls

@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+    name: accounts
+    namespace: bnb
+data:
+    application.properties: |
+        spring.datasource.url=jdbc:postgresql://credo-qa6cu2erc2h999b.us-east-1.rds.amazonaws.com:5432/accounts_bnb
+        spring.datasource.username=accounts_bnb
+        spring.datasource.password=${SECRETS_ACCOUNTS_PASSWD:bnb}
+        liquidbase.contexts=staging,bnb,bnb-staging
